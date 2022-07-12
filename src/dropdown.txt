@@ -1,0 +1,73 @@
+component.ts
+
+/*  Countries: Country[] = [];
+  Country: Country = new Country();
+  states: State[] = [];
+  state: State = new State();
+  Districts: District[] = [];
+  district: District = new District();
+  Cities:City[]=[];
+  city:City = new City();
+  Pincode:Pincode = new Pincode();
+  Pincodes:Pincode[]=[];
+  constructor(private http: HttpClient) { }
+  url: string = "https://localhost:44367/api/" */
+//  ngOnInit(): void {
+   // this.OnGetCounties();
+//  }
+ /* OnGetCounties() {
+    this.http.get(this.url + "GetCountries").subscribe((data: any) => this.Countries = data)
+    console.log(this.Countries)
+  }
+  OnGetStates() {
+    if (this.state.StateId  > 0) {
+      this.http.get(this.url + "GetStates/" + this.state.StateId).subscribe((data: any) => this.states = data)
+    }
+  }
+  OnGetDistricts() {
+    console.log(this.district.DistrictId)
+    if (this.district.DistrictId  > 0) {
+      this.http.get(this.url+"GetDistricts/" + this.district.DistrictId).subscribe((data: any) => this.Districts = data);
+    }
+  }
+  OnGetCities(){
+    if(this.city.CityId > 0) {
+      this.http.get(this.url+"Getcities/"+ this.city.CityId).subscribe((data:any) => this.Cities =data);
+    }
+  }
+  OnGetPinCodes(){
+    if(this.Pincode.PincodeId > 0){
+      this.http.get(this.url+""+ this.Pincode.PincodeId).subscribe((data:any) => this.Pincodes = data);
+    }
+  }*/
+
+
+  //////////////////////////////////////
+
+component.html
+<!-- <div class="row">
+    <div class="form-group  col-sm-4">
+        <select name="" id="" class="form-control" (change)="OnGetStates()" [(ngModel)]="state.StateId">
+            <option value="--select option--">--select option--</option>
+            <option *ngFor="let contry of Countries" value="{{contry.CountryId}}">{{contry.CountryName}}</option>
+        </select>
+    </div>
+    <div class="form-group  col-sm-4">
+        <select name="" id="" class="form-control" (change)="OnGetDistricts()" [(ngModel)]="district.DistrictId" >
+            <option value="--select option--">--select option--</option>
+            <option *ngFor="let stat of states" value="{{stat.StateId}}">{{stat.StateName}}</option>
+        </select>
+    </div>
+    <div class="form-group  col-sm-4">
+        <select name="" id="" class="form-control" (change)="OnGetCities()" [(ngModel)]="city.CityId" >
+            <option value="--select option--">--select option--</option>
+            <option *ngFor="let dist of Districts" value="{{dist.DistrictId}}">{{dist.DistrictName}}</option>
+        </select>
+    </div>
+    <div class="form-group  col-sm-4">
+        <select name="" id="" class="form-control"  >
+            <option value="--select option--">--select option--</option>
+            <option *ngFor="let cit of Cities " value="{{cit.CityId}}">{{cit.CityName}}</option>
+        </select>
+    </div>
+</div> -->

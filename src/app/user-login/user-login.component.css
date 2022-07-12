@@ -1,0 +1,73 @@
+
+#mainh{
+    display: inline-block;
+    color: rgb(19, 207, 19);
+}
+
+#fd{
+    border: 1px solid blueviolet;
+}
+#sd{
+    border: 1px solid green;
+    margin-right: 30px;
+}
+#td{
+    text-align: center;
+    color: rgb(123, 192, 18);
+    font-size: larger;
+    margin: 30px;
+}
+a{
+    color:blue;
+}
+a:hover{
+    color: blueviolet;
+}
+
+.sp{
+    color: red;
+    margin-left: 60px;
+}
+
+.form-control{
+    width: 80%;
+    margin:auto;
+    height: 60px;
+    border-bottom: 1px solid blueviolet;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.id{
+    margin-bottom: 0;
+}
+input{
+    border: none;
+    border-radius: 0;
+}
+
+button{
+    border-radius: 0.4cm;
+    width: 80%;
+    margin-left:50px;
+    height: 60px;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    background-color:blueviolet;
+    outline: none;
+}
+button:hover{
+    background-color:  blueviolet ;
+    color: white;
+    outline: none;
+}
+.sp1{
+    display: none;
+}
+b{
+    margin: 5px;
+}
+span{
+    padding: 0;
+    margin: 0;
+}

@@ -1,0 +1,68 @@
+<div class="container">
+    <h1 id="header">SKILLICEBERG</h1>
+    <div style="border: 1px solid black; padding: 20px;">
+
+        <h3>PersonDetails</h3>
+
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="">First Name</label>
+                <input type="text" class="form-control" required maxlength="12" name="txtfirstname" id="txtfirstname"
+                    placeholder="Enter your First name" [(ngModel)]="savePerson.FirstName">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">Last Name</label>
+                <input type="text" class="form-control" required maxlength="15" name="txtlastname" id="txtlastname"
+                    placeholder="Enter your Last name" [(ngModel)]="savePerson.LastName">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">Father Name</label>
+                <input type="text" class="form-control" required maxlength="15" name="txtlastname" id="txtlastname"
+                    placeholder="Enter your Father name" [(ngModel)]="savePerson.FatherName">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">Gender</label>
+                <select name="" id="" class="form-control" [(ngModel)]="savePerson.Gender">
+                    <option value="--Select Gender--">--Select Gender--</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">Email</label>
+                <input type="text" class="form-control" required name="txtemail" id="txtemail"
+                    placeholder="Enter your Email" emailValidate [(ngModel)]="savePerson.Email">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">DateOf Birth</label>
+                <input type="date" class="form-control" placeholder="Enter Your DateOfBirth" name="caldateofbirth"
+                    id="caldateofbirth" [(ngModel)]="savePerson.DateOfBirth">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">Age</label>
+                <input type="text" class="form-control" required id="age" placeholder="Enter your Age" name="age"
+                    [(ngModel)]="savePerson.Age" #age>
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">Aadhar number</label>
+                <input type="text" class="form-control" required placeholder="Enter your phone number"
+                    name="txtnumphone" id="txtnumphone" [(ngModel)]="savePerson.Aadhar">
+            </div>
+            <div class="form-group col-sm-4">
+                <label for="">Phone</label>
+                <input type="text" class="form-control" required placeholder="Enter your phone number"
+                    name="txtnumphone" id="txtnumphone" [(ngModel)]="savePerson.MobileNumber">
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label> <input type="checkbox" required>
+                I accept all terms and conditions
+            </label>
+        </div>
+        <button class="btn btn-primary" type="submit" (click)="OnSavePerson()">Save</button>
+
+    </div>
+</div>

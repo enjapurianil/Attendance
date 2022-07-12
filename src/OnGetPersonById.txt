@@ -1,0 +1,25 @@
+
+
+  // OnGetPersonById(ListAttendance: any) {
+  //   this.http.get(this.Url + 'GetPersonMatchedList').subscribe((data1: any) => {
+
+  //     })
+  //     //  debugger;
+  //     // this.ListAttendance.forEach(element => {
+  //     //   this.person.forEach(e => {
+  //     //     if (e.PersonId == element.PersonId) {
+  //     //       element.Name = e.FirstName;
+  //     //     }
+
+  //     //   })
+  //     // });
+  //   /*  console.log(list.length)
+  //     for (let i = 0; i < list.length; i++) {
+  //       for (let j = 0; j < this.person.length; j++) {
+  //         if (this.person[j].PersonId == list[i].PersonId) {
+  //           list[i].Name = this.person[j].FirstName;
+  //         };
+  //       }
+  //     }*/
+  // }
+ 

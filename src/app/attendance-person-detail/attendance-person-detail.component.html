@@ -1,0 +1,108 @@
+<div class="container">
+
+    <div class="contain">
+        <br>
+        <button class="btn btn-success" routerLink="/Entry_Person" fragment="loading_page">+ Add New User </button>
+        <div style="text-align: center;" class="form-group">
+            <h3>Select Shift</h3>
+            <select name="" id="" [(ngModel)]="attendance.Shifts">
+                <option>--select Shift--</option>
+                <option value="MorningShift" selected>MorningShift</option>
+                <option value="AfterNoonShift">AfterNoonShift</option>
+                <option value="NightShift">NightShift</option>
+                <option value="exam">Exam</option>
+            </select>
+        </div>{{time}}
+        <div>
+            <div style="border: 1px solid black; padding: 10px;margin: 5px;" class="row"
+                *ngFor="let person of getPersonDetails;let i= index">
+                <div class="col-sm-2">
+                    <div> <b>UserID</b> </div>
+                    <div> <b>Name</b> </div>
+                    <div> <b>Father Name</b> </div>
+                    <div> <b>Email</b> </div>
+                    <div> <b>Phone</b> </div>
+                    <button class="btn btn-success" (click)="OnEditPerson(person.PersonId)">Edit</button>
+                    <button class="btn btn-danger" (click)="OnDeletePerson(person.PersonId)">Delete</button><br>
+                </div>
+                <div class="col-sm-2">
+                    <div><b>:</b>{{person.PersonId}}</div>
+                    <div><b>:</b>{{person.FirstName}}{{person.LastName}}</div>
+                    <div><b>:</b>{{person.FatherName}}</div>
+                    <div><b>:</b>{{person.Email}}</div>
+                    <div><b>:</b>{{person.MobileNumber}}</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-2 form-group">
+                            <label for="">IsPresent</label><br>
+                            <td class="col-sm-2"><input type="checkbox" (click)="Present(person)"
+                                    [(ngModel)]="person.IsPresent" value="{{person.IsPresent ? 'Abscent':'Present'}}"
+                                    name="Attandence">
+                                <span [style.color]="person.IsPresent? 'green' : 'red' ">
+                                    {{person.IsPresent ? 'Present':'Abscent'}}</span>
+                            </td>
+                        </div>
+                        <div class="col-sm-5">
+                            CheckIn <br><input type="datetime-local" [(ngModel)]="person.CheckIn">
+                            <!-- <input type="checkbox" > Current Time <br> -->
+                            CheckOut<input type="datetime-local" [(ngModel)]="person.CheckOut">
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-success" (click)="OnAttendanceSave(person)">SaveAttendance</button>
+                        </div>
+                        <!-- <div style="text-align:center">
+
+                            <ng-container *ngFor="let item of imageTypes">
+                                <webcam [height]="100" [width]="100" [trigger]="triggerObservable"
+                                    *ngIf="person.IsPresent" (imageCapture)="handleImage($event)"
+                                    (initError)="handleInitError($event)"></webcam>
+                                <br />
+                                <button (click)="triggerSnapshot(item.Type)">{{item.Type}}</button>
+                            </ng-container>
+
+                        </div> -->
+                        <div class="modal" role="dialog" [style.display]="person.IsPresent ? 'block' :'none' ">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div style="float: right;border:2px solid white;color:white" (click)="Present(person)" ><span class="glyphicon glyphicon-remove"></span></div>
+                                        <div style="text-align:center;background-color: red;">
+                                            <webcam [height]="100" [width]="100" [trigger]="triggerObservable"
+                                                *ngIf="person.IsPresent" (imageCapture)="handleImage($event)"
+                                                (initError)="handleInitError($event)"></webcam>
+                                            <br />
+                                            <ng-container *ngFor="let item of imageTypes">
+                                                <button (click)="triggerSnapshot(item)">{{item.ImageType}}</button>
+                                            </ng-container><br>
+                                            <div *ngFor="let images of imagesAttendance" style="display:inline-block ;">
+                                                <img [src]="images.Type" alt="" height="100" width="100"><br><b
+                                                    style="color: white;">{{images.TypeName}}</b>
+                                            </div><br>
+                                            <button>save</button>
+                                            <!-- <button class="actionBtn" (click)="triggerSnapshot();" title="Take Picture">Take Capture</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 *ngIf="errors.length > 0">Messages:</h4>
+                        <ul *ngFor="let error of errors">
+                            <li>{{error | json}}</li>
+                        </ul>
+                        <!-- <div class="snapshot" *ngIf="webcamImage"> <img [src]="webcamImage.imageAsDataUrl" alt=""> </div> -->
+                        <div *ngIf="attendance.Shifts=='exam'">
+                            <input type="text" [(ngModel)]="hours">
+                            <input type="text" [(ngModel)]="minutes">
+                            <input type="text" [(ngModel)]="seconds">
+                            <button (click)="startTimre()">submit</button>
+                            {{hrs}}:{{min}}:{{sec}}
+                            <button (click)="SaveWebCamImage()" >stop</button>
+                            <!-- <timer [value] = "Timer"  (onComplete)="timerCompleted($event)" ></timer> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

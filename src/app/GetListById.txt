@@ -1,0 +1,74 @@
+ OnGetAllDetails() {
+    if (this.useridservice.userid != undefined) {
+      this.http.get(this.url + "GetUserById/" + this.useridservice.userid).subscribe((data: any) => {
+        this.personDetails = data;
+        this.http.get(this.url + "GettblgenderById/" + data.genderid).subscribe((data: any) => {
+          this.gender = data.gendercode;
+        })
+      });
+      // Gardian detail Getting //
+      this.http.get(this.url + "GetGradianListById/" + this.useridservice.userid).subscribe((data: any) => {
+        this.gardiandetails = data;
+        this.http.get(this.url + "GettblgenderById/" + data.genderid).subscribe((data: any) => {
+          this.gardiandetails.forEach((element: any) => {
+            element.gender = data.gendercode;
+            console.log(element)
+          });
+        })
+      });
+      // Address  //
+      this.http.get(this.url + "GetAddressListById/" + this.useridservice.userid).subscribe((data: any) => {
+        this.addresses = data;
+        this.addresses.forEach(element => {
+          this.http.get(this.url + "GetCountriesById/" + element.countryid).subscribe((data: any) => {
+            this.addresses.forEach(element => {
+              element.country = data.countrycode;
+            });
+          })
+          this.http.get(this.url + "GetStatesById/" + element.stateid).subscribe((data: any) => {
+            this.addresses.forEach(element => {
+              element.state = data.statecode;
+            });
+          })
+          this.http.get(this.url + "GetcitiesById/" + element.cityid).subscribe((data: any) => {
+            this.addresses.forEach(element => {
+              element.city = data.citycode;
+            });
+          })
+        });
+
+      });
+      this.http.get(this.url + "GetEducationListById/" + this.useridservice.userid).subscribe((data: any) => {
+        this.educationdetails = data;
+        this.educationdetails.forEach(element => {
+          this.http.get(this.url + "GetUniversityById/" + element.universityid).subscribe((data: any) => {
+            this.educationdetails.forEach(element => {
+              element.universityname = data.universitycode;
+            });
+          })
+          this.http.get(this.url + "GetCollegesById/" + element.collegeid).subscribe((data: any) => {
+            this.educationdetails.forEach(element => {
+              element.collegename = data.collegename;
+            });
+          })
+        });
+
+      });
+      this.http.get(this.url + "GetCollegeSelectionById/" + this.useridservice.userid).subscribe((data: any) => {
+        this.collegeselection = data
+        this.http.get(this.url + "GetUniversityById/" + this.collegeselection.univercityid).subscribe((data: any) => {
+          this.collegeselection.universityname = data.universityname;
+        });
+        this.http.get(this.url + "GetCollegesById/" + this.collegeselection.collegeid).subscribe((data: any) => {
+          this.collegeselection.collegename = data.collegename;
+        });
+        this.http.get(this.url + "GetcourseById/" + this.collegeselection.courseid).subscribe((data: any) => {
+          this.collegeselection.coursename = data.coursename;
+        });
+        this.http.get(this.url + "GetBranchById/" + this.collegeselection.branchid).subscribe((data: any) => {
+          this.collegeselection.branchname = data.branchname;
+        });
+      })
+
+    }
+  }

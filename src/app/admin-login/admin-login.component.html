@@ -1,0 +1,35 @@
+<form #login="ngForm" (ngSubmit)="adminSubmit(login.value)" >
+    <div style="text-align:center;">
+      <h1>Admin Login</h1>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4" id="sd">
+      <div class="row">
+        <input type="text" ngModel #adminln="ngModel" name="userID" class="form-control id" required
+          placeholder="Enter UserID">
+        <span class="sp" *ngIf="!adminln.valid && adminln.touched">*Please Enter AdminID is Mandatory</span>
+        <span class="sp1" #sp></span>
+      </div>
+      <div class="row">
+        <input type="password" ngModel #adminln1="ngModel" name="hospPasswrd" class="form-control id" required
+          placeholder="Enter Password">
+        <span class="sp" *ngIf="!adminln1.valid && adminln1.touched">*Please Enter Password is Mandatory</span>
+        <span class="sp1" #sp1>Invalid username (or) password..!</span>
+      </div>
+      <br>
+      <button class="btn" [disabled]="login.invalid" >Login</button>
+      <br>
+      <div id="td">
+        <span>
+          <a routerLink="/userLogin"> User Login </a>
+        </span><br>
+        <span>
+          <a href="/forgotlogin"> Forgot Password? </a>
+        </span>
+        <b>or</b>
+        <span>
+          <a routerLink="/restration"> New Registration </a>
+        </span>
+      </div>
+    </div>
+  </form>

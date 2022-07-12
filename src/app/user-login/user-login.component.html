@@ -1,0 +1,34 @@
+<form #login="ngForm">
+  <div style="text-align:center;">
+    <h1>User Login</h1>
+  </div>
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" id="sd">
+    <div class="row">
+      <input type="text" [(ngModel)]="userLoginData.Username" #userln="ngModel" name="Username" class="form-control id"
+        required placeholder="Enter AdminID">
+      <span class="sp" *ngIf="!userln.valid && userln.touched">*Please Enter USERID is Mandatory</span>
+      <span class="sp1" #sp></span>
+    </div>
+    <div class="row">
+      <input type="password" [(ngModel)]="userLoginData.Password" #userln1="ngModel" name="Password"
+        class="form-control id" required placeholder="Enter Password">
+      <span class="sp" *ngIf="!userln1.valid && userln1.touched">*Please Enter Password is Mandatory</span>
+      <span class="sp1" #sp1>Invalid username (or) password..!</span>
+    </div>
+    <br>
+    <button class="btn" [disabled]="login.invalid" (click)="loginHosp(login.value)">Login</button>
+    <br>
+    <div id="td">
+      <a routerLink="/admin"> Admin Login </a>
+      <br>
+      <span>
+        <a href="/forgotlogin"> Forgot Password? </a>
+      </span>
+      <b>or</b>
+      <span>
+        <a routerLink="/Entry_Person"> New Registration </a>
+      </span>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,145 @@
+<div class="container">
+
+    <div class="contain">
+        <br>
+        <div style="float: right;">
+            <button (click)="Logout()">LogOut</button>
+        </div>
+        <button class="btn btn-success" routerLink="/Entry_Person" fragment="loading_page">+ Add New User </button>
+        <!-- <div style="text-align: center;" class="form-group">
+            <h3>Select Shift</h3>
+            <select name="" id="" [(ngModel)]="attendance.Shifts">
+                <option>--select Shift--</option>
+                <option value="MorningShift" selected>MorningShift</option>
+                <option value="AfterNoonShift">AfterNoonShift</option>
+                <option value="NightShift">NightShift</option>
+                <option value="exam">Exam</option>
+            </select>
+        </div> -->{{time}}
+        <div class="text-center">
+            <div class="row" style="border: 1px solid black;">
+                <div class="col-sm-4"><label for="">SessionType:</label>{{sessionobj.sessiontype}}</div>
+
+                <div class="col-sm-4"><label for="">StartSession:</label>{{sessionobj.sessionstarttime}}</div>
+
+                <div class="col-sm-4"><label for="">EndSession:</label>{{sessionobj.sessionendtime}}</div>
+            </div>
+            <!-- <input type="datetime-local"> -->
+        </div>
+        <audio style="float: right;" controls autoplay *ngIf="IsSound== true">
+            <source src="horse.ogg" type="audio/ogg">
+            <source src="assets\emergency-alarm-with-reverb-29431.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <div>
+            <div style="border: 1px solid black; padding: 10px;margin: 5px;" class="row">
+                <div class="col-sm-2">
+                    <div> <b>UserID</b> </div>
+                    <div> <b>Name</b> </div>
+                    <div> <b>Father Name</b> </div>
+                    <div> <b>Email</b> </div>
+                    <div> <b>Phone</b> </div>
+                    <!-- <button class="btn btn-success" (click)="OnEditPerson(getPerson.PersonId)">Edit</button>
+                    <button class="btn btn-danger" (click)="OnDeletePerson(getPerson.PersonId)">Delete</button><br> -->
+                </div>
+                <div class="col-sm-2">
+                    <div><b>:</b>{{getPerson.PersonId}}</div>
+                    <div><b>:</b>{{getPerson.FirstName}}{{getPerson.LastName}}</div>
+                    <div><b>:</b>{{getPerson.FatherName}}</div>
+                    <div><b>:</b>{{getPerson.Email}}</div>
+                    <div><b>:</b>{{getPerson.MobileNumber}}</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-2 form-group">
+                            <label for="">IsPresent</label><br>
+                            <td class="col-sm-2"><input type="checkbox" (click)="Present(getPerson)"
+                                    [(ngModel)]="getPerson.IsPresent"
+                                    value="{{getPerson.IsPresent ? 'Abscent':'Present'}}" name="Attandence">
+                                <span [style.color]="getPerson.IsPresent? 'green' : 'red' ">
+                                    {{getPerson.IsPresent ? 'Present':'Abscent'}}</span>
+                            </td>
+                        </div>
+                        <div class="col-sm-5">
+                            <!--<input type="datetime-local" [(ngModel)]="getPerson.CheckIn"> -->
+                            <input type="checkbox" [(ngModel)]="getPerson.CheckIn">CheckIn <br>
+                            <!-- CheckOut<input type="datetime-local" [(ngModel)]="getPerson.CheckOut"> -->
+                            <input type="checkbox" [(ngModel)]="getPerson.CheckOut">CheckOut
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-success"
+                                (click)="OnAttendanceSave(getPerson)">SaveAttendance</button>
+                        </div>
+                        <!-- <div style="text-align:center">
+
+                            <ng-container *ngFor="let item of imageTypes">
+                                <webcam [height]="100" [width]="100" [trigger]="triggerObservable"
+                                    *ngIf="person.IsPresent" (imageCapture)="handleImage($event)"
+                                    (initError)="handleInitError($event)"></webcam>
+                                <br />
+                                <button (click)="triggerSnapshot(item.Type)">{{item.Type}}</button>
+                            </ng-container>
+
+                        </div> -->
+                        <div class="modal" role="dialog" [style.display]="getPerson.IsPresent ? 'block' :'none' ">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div style="float: right;border:2px solid white;color:white"
+                                            (click)="CloseDialog(getPerson)"><span
+                                                class="glyphicon glyphicon-remove"></span></div>
+                                        <div style="text-align:center;background-color: red;">
+                                            <webcam [height]="100" [width]="100" [trigger]="triggerObservable"
+                                                *ngIf="getPerson.IsPresent" (imageCapture)="handleImage($event)"
+                                                (initError)="handleInitError($event)"></webcam>
+                                            <br />
+                                            <ng-container *ngFor="let item of imageTypes">
+                                                <button
+                                                    (click)="triggerSnapshot(item,getPerson)">{{item.ImageType}}</button>
+                                            </ng-container><br>
+                                            <div *ngFor="let img of imagesAttendance;let j=index"
+                                                style="display:inline-block ;border:1px solid white ;">
+                                                <img [src]="imageAttendance.Images" alt="" height="100" width="100"><br>
+                                                <button (click)="Remove(j)">Remove{{img.TypeName}}</button>
+                                            </div><br>
+                                            <button (click)="Present(getPerson)">Ok</button>
+                                            <!-- <button class="actionBtn" (click)="triggerSnapshot();" title="Take Picture">Take Capture</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 *ngIf="errors.length > 0">Messages:</h4>
+                        <ul *ngFor="let error of errors">
+                            <li>{{error | json}}</li>
+                        </ul>
+                        <!-- <div class="snapshot" *ngIf="webcamImage"> <img [src]="webcamImage.imageAsDataUrl" alt=""> </div> -->
+                        <div class="col-sm-4" *ngIf="attendance.Shifts=='exam'">
+                            <input type="text" [(ngModel)]="hours">
+                            <input type="text" [(ngModel)]="minutes">
+                            <input type="text" [(ngModel)]="seconds">
+                            <button (click)="startTimre()" *ngIf="IsStop==true">Start</button>
+                            <button (click)="stopTimer()" *ngIf="IsStop==false">Stop</button><br>
+                            {{hours}}hr:{{minutes}}mins:{{seconds}}sec
+                            <!-- <timer [value] = "Timer"  (onComplete)="timerCompleted($event)" ></timer> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div [style.display]="IsLateAttendance ? 'block' :'none' " class="modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span style="color: red;">YOU ARE {{LateTime}} MINUTES LATE </span><br>
+                    <span style="color: blue">You Should write the reason:</span><br>
+                    <textarea name="" id="" cols="30" rows="2" [(ngModel)] = "reasonForLate" placeholder="Should write Min 10 charecters of Reason" ></textarea>
+                    <div class="text-center">
+                        <button (click)="OnLateAttendanceDisable()">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,47 @@
+<div class="container">
+    <h1 style="text-align: center;background-color:rgb(168, 123, 211);color:white">Student Attendence List</h1>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class=" col-sm-4">
+            <div class="form-group">
+                <label for="">Search Date</label>
+                <input type="date" [(ngModel)]=" filterData" class="form-control" style="width: 50%;">
+            </div>
+        </div>
+        <div class=" col-sm-4 ">
+            <div class="form-group">
+                <label for="">Search Shift</label>
+                <input type="text" (keyup)="Search($event)" [(ngModel)]="searchdata" class="form-control"
+                    style="width: 50%;">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div style="border: 1px solid black;border-collapse:collapse">
+
+        <div *ngFor="let attend of ListAttendance" id="list">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h3 style="color: black">{{attend.Name | uppercase}}</h3>
+                    <img [src]="attend.Images" alt="" height="100" width="100" >
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="">IsPresent</label><br>
+                    <td class="col-sm-2"><input type="checkbox" [(ngModel)]="attend.IsPresent"
+                            value="{{attend.IsPresent ? 'Abscent':'Present'}}" name="Attandence">
+                        <span [style.color]="attend.IsPresent? 'green' : 'red' ">
+                            {{attend.IsPresent ? 'Present':'Abscent'}}</span>
+                    </td>
+                </div>
+                <div class="col-sm-4">
+                    CheckIn <br><input type="datetime-local" [(ngModel)]="attend.CheckIn">
+                </div>
+                <div class="col-sm-4">
+                    <button class="btn btn-success" (click)="OnEditattend(attend.PersonId)">Edit</button>
+                    <button class="btn btn-danger" (click)="OnDeleteattend(attend.AttendanceId)">Delete</button><br><br>
+                    <button class="btn btn-success" (click)="OnAttendanceSave(attend)">SaveAttendance</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

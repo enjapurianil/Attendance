@@ -1,0 +1,25 @@
+ OnGetSessions(){
+    this.http.get(this.url+"Getsessions").subscribe((data:any) => {
+      data.find((element:any) => {
+         let date =new Date ( new Date().toString().split('GMT')[0]+'UTC').toISOString().split('.')[0];
+        // let date =new Date ( new Date().toString()+'UTC').toISOString();
+        // let start = element.sessionstarttime.split("T");
+        // let sT1 = start[0]; let sT2 = start[1].split(":");
+        // let end =  element.sessionendtime.split("T");
+        // let eT1 = end[0]; let eT2 = end[1].split(":");
+        // let present = date
+        // let pT1 = present[0];
+        // let pT2 = present[1].split(":");
+        // console.log(pT1 , sT1 , sT2 , pT2 , eT2 , pT2[0],present)
+        // if(pT1 == sT1 && sT2[0] <= pT2[0]  && eT2[0] >= pT2[0]){
+        //   this.sessionobj = element;
+        // }
+        let present = date.split(":")
+        let d = present[0]+":"+present[1];
+        console.log(present[0]+":"+present[1] , element.sessionendtime ,element.sessionstarttime)
+        if(element.sessionstarttime < d && element.sessionendtime > d){
+          this.sessionobj = element;
+        }
+      });
+    })
+  }

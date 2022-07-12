@@ -1,0 +1,39 @@
+ <!-- <div class="row">
+            <div class="form-group  col-sm-4">
+                <label for="">Country</label>
+                <select name="" id="" class="form-control" (change)="OnGetStates()" [(ngModel)]="state.StateId">
+                    <option value="--select option--">--select option--</option>
+                    <option *ngFor="let contry of countries" value="{{contry.CountryId}}">{{contry.CountryName}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group  col-sm-4">
+                <label for="">State</label>
+                <select name="" id="" class="form-control" (change)="OnGetDistricts()"
+                    [(ngModel)]="district.DistrictId">
+                    <option value="--select option--">--select option--</option>
+                    <option *ngFor="let stat of states" value="{{stat.StateId}}">{{stat.StateName}}</option>
+                </select>
+            </div>
+            <div class="form-group  col-sm-4">
+                <label for="">District</label>
+                <select name="" id="" class="form-control" (change)="OnGetCities()" [(ngModel)]="city.CityId">
+                    <option value="--select option--">--select option--</option>
+                    <option *ngFor="let dist of districts" value="{{dist.DistrictId}}">{{dist.DistrictName}}</option>
+                </select>
+            </div>
+            <div class="form-group  col-sm-4">
+                <label for="">City</label>
+                <select name="" id="" class="form-control" (change)="OnGetPinCodes()" [(ngModel)]="pinCode.PincodeId" >
+                    <option value="--select option--">--select option--</option>
+                    <option *ngFor="let cit of cities" value="{{cit.CityId}}">{{cit.CityName}}</option>
+                </select>
+            </div>
+            <div class="form-group  col-sm-4">
+                <label for="">Pincode</label>
+                <select name="" id="" class="form-control" [(ngModel)]="pinCode.PincodeId" >
+                    <option value="--select option--">--select option--</option>
+                    <option *ngFor="let pin of pincodes" value="{{pin.PincodeId}}">{{pin.PincodeNum}}</option>
+                </select>
+            </div>
+        </div> -->
