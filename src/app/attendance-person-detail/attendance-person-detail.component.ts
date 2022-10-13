@@ -7,7 +7,7 @@ import { WebcamImage, WebcamComponent, WebcamInitError } from 'ngx-webcam';
 import { Subject, Observable } from 'rxjs';
 
 export class Attendance {
-  Name?: string;
+  Name!: string;
   IsPresent: boolean = false;
   CheckIn !: string;
   CheckOut !: string;

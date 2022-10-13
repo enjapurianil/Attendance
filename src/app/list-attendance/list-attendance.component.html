@@ -5,13 +5,13 @@
         <div class=" col-sm-4">
             <div class="form-group">
                 <label for="">Search Date</label>
-                <input type="date" [(ngModel)]=" filterData" class="form-control" style="width: 50%;">
+                <input type="date" (change) ="Search($event.target)" [(ngModel)]=" filterData" class="form-control" style="width: 50%;">
             </div>
         </div>
         <div class=" col-sm-4 ">
             <div class="form-group">
                 <label for="">Search Shift</label>
-                <input type="text" (keyup)="Search($event)" [(ngModel)]="searchdata" class="form-control"
+                <input type="text" (keyup)="Search($event.target)" [(ngModel)]="searchdata" class="form-control"
                     style="width: 50%;">
             </div>
         </div>

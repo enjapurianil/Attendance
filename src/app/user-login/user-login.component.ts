@@ -19,10 +19,10 @@ export class UserLoginComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.service.PersonId)
   }
-  loginHosp(login:NgForm) {
-   console.log(login)
+  loginHosp():any {
+  // console.log(login)
    console.log(this.userLoginData)
-    this.http.post(this.url + "GetPersonDetailByModel", login).subscribe((data: any) => {
+   return  this.service.Post(this.url + "GetPersonDetailByModel", this.userLoginData).subscribe((data: any) => {
       if (data != undefined) {
         console.log(data);
         this.service.PersonId = data.PersonId;

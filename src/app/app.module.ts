@@ -19,6 +19,7 @@ import { AdminLoginComponent} from './admin-login/admin-login.component';
 import { GetPersonComponent } from './get-person/get-person.component';
 import { AuthInterceptorService } from './AuthInteceptor.service';
 import { LoggingInterceptorService } from './LoggingInterceptor.service';
+import { AuthGaurdGuard } from './user-login/auth-gaurd.guard';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LoggingInterceptorService } from './LoggingInterceptor.service';
     WebcamModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS ,useClass :AuthInterceptorService,multi:true},
-  {provide :HTTP_INTERCEPTORS,useClass:LoggingInterceptorService,multi:true}],
+  {provide :HTTP_INTERCEPTORS,useClass:LoggingInterceptorService,multi:true},
+  AuthGaurdGuard],
   bootstrap: [AppComponent],
   schemas : [CUSTOM_ELEMENTS_SCHEMA ,NO_ERRORS_SCHEMA]
 })

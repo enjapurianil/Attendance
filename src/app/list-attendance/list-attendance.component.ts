@@ -47,13 +47,20 @@ export class ListAttendanceComponent implements OnInit {
   OnAttendanceSave(person: any) { }
 
   Search(data: any) {
-    if (this.searchdata != null) {
-      this.ListAttendance = this.BaseListAttendance.filter((element: any) => {
-        return element.name.toLowerCase().trim() == this.searchdata.toLowerCase();
-      });
+    // if (this.searchdata != null) {
+    //   this.ListAttendance = this.BaseListAttendance.filter((element: any) => {
+    //     return element.name.toLowerCase().trim() == this.searchdata.toLowerCase();
+    //   });
+    // }
+    // else {
+    //   this.ListAttendance = this.BaseListAttendance
+    // }
+
+    if(data.value !=""){
+      this.ListAttendance = this.ListAttendance.filter((x:any) => (x.Name.toLowerCase().indexOf(data.value) > -1) || (x.CheckIn.indexOf(data.value) > -1))
     }
-    else {
-      this.ListAttendance = this.BaseListAttendance
+    else{
+      this.OnListAttendance();
     }
   }
 }
